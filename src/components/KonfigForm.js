@@ -3,7 +3,7 @@ import CarModel from './CarModel'
 import UserInput from './UserInput'
 import EditPage from './EditPage'
 import ServisOptions from './ServisOptions'
-
+import DataSent from './DataSent'
 export class KonfigForm extends Component {
 
     state={
@@ -81,6 +81,9 @@ getDiscount=(discount)=>{
         discount:discount
     })
 }
+closeForm=()=>{
+    this.props.closeForm()
+}
 getServicesSelected=(selectedServices)=>{
     this.setState({selectedServices:selectedServices})
 }
@@ -125,7 +128,7 @@ getServicesSelected=(selectedServices)=>{
                 confirmData={this.confirmData}
                 previousStep={this.previousStep}
                 />)
-            case 505: return(<div>podaci poslani</div>)
+            case 505: return(<DataSent closeForm={this.closeForm}/>)
 default : return(<div>error</div>)
         }
     }

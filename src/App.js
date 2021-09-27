@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import KonfigForm from './components/KonfigForm';
-
-
+import IconButton from '@mui/material/IconButton'
+import CloseIcon from '@mui/icons-material/Close';
 import Dialog from '@mui/material/Dialog';
 
 import DialogContent from '@mui/material/DialogContent';
@@ -21,23 +21,33 @@ handleClose = () => {
   render() {
     const {open} = this.state
     return (
-      <div>
-        test
-        <button variant="outlined" onClick={this.handleClickOpen}>
-        Open form dialog
-      </button>
+     
+     <div>
+     <div>
+
+        <h4>pritisnite gumb niže kako biste pokrenuli</h4>
+  
+         <button variant="outlined" onClick={this.handleClickOpen}>
+        Pokreni konfigurator
+        </button>
+        
+        </div>
       
       <Dialog open={open} onClose={this.handleClose}>
-        <DialogTitle>Konfigurator Servisa</DialogTitle>
+   
+        <DialogTitle>Konfigurator Servisa    <IconButton onClick={this.handleClose}>
+           <CloseIcon/>
+        </IconButton></DialogTitle>
+        
         <DialogContent>
-          <KonfigForm />
+          <KonfigForm closeForm={this.handleClose} />
           
         </DialogContent>
        
       </Dialog>
      
-
-      </div>
+     
+     </div>
     )
   }
 }
